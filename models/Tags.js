@@ -1,6 +1,8 @@
 const { Mode, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
 
+class Tag extends Model {};
+
 //Tags requires ID and Tag Name
 Tags.init(
     {
@@ -15,7 +17,13 @@ Tags.init(
           allowNull: false,   
         },
     },
-    
+    {
+      sequelize,
+      timestamps: false,
+      underscored: true,
+      modelName: 'tag',
+      tableName: 'tags',
+    }
 )
 
 module.exports = Tags;
