@@ -1,0 +1,32 @@
+{
+  "name": "dewi",
+  "version": "1.0.0",
+  "description": "Book recommendation site.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzequielMejiasMelo/dewi.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EzequielMejiasMelo/dewi/issues"
+  },
+  "homepage": "https://github.com/EzequielMejiasMelo/dewi#readme",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "connect-session-sequelize": "^6.1.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^8.8.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "mysql2": "^2.0.1",
+    "prettier": "^2.5.1",
+    "sequelize": "^5.21.2"
+  }
+}
