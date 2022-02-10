@@ -1,45 +1,56 @@
-{{!-- Needs a refactor to fit our project --}}
-<!DOCTYPE html>
-<html lang="en">
+{{! Needs a refactor to fit our project }}
+
+<html lang='en'>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
   <title>Dewi</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css' />
+  <link rel='stylesheet' href='/css/style.css' />
 </head>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Find a new favorite book!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+<body class="has-background-dark">
+  <div class=''>
+    <header class=''>
+      <nav class='navbar has-background-success-dark' role='navigation' aria-label='main navigation'>
+        <div class='navbar-brand'>
+          <a class='navbar-item' href='/'>
+            <h1 class="is-size-1 has-text-light">DEWI</I></h1>
+          </a>
+
+          <a role='button' class='navbar-burger' aria-label='menu' aria-expanded='false'>
+            <span aria-hidden='true'class="has-background-light"></span>
+            <span aria-hidden='true'class="has-background-light"></span>
+            <span aria-hidden='true'class="has-background-light"></span>
+          </a>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <a href="/search" class="navbar-item has-text-light">Search</a>
+          </div>
+          <div class="navbar-end">
+            <a href="/shelf" class="navbar-item has-text-light">Shelf</a>
+            <a href="/login" class="navbar-item has-text-light">Login</a>
+            <a href="/signup" class="navbar-item has-text-light">Sign Up</a>
+          </div>
+        </div>
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
+    <main class='container mt-5'>
       <!-- Render the sub layout -->
-      {{{ body }}}
+      {{{body}}}
     </main>
     <footer>
-      
+
     </footer>
   </div>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src='/js/logout.js'></script>
   {{/if}}
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/bulmaFunction.js"></script>
 </html>
