@@ -1,7 +1,7 @@
 const { Mode, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
 
-class Tag extends Model {};
+class Tags extends Model {};
 
 //Tags requires ID and Tag Name
 Tags.init(

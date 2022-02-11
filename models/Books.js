@@ -33,4 +33,4 @@ Books.init(
     }
 )
 
-module.exports = "Books"
+module.exports = Books;
