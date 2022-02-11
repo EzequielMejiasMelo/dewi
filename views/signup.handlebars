@@ -1,1 +1,23 @@
-<p class="has-text-light">Hello! I am the signup page!</p>
+<div class="container p-3 mt-5">
+    <div class="col-8 mx-auto">
+        <h1 class="display-3 text-center mb-5">Create your own Bookshelf here:</h1>
+
+        <form id="signup-form" class="mb-3 card">
+            <h2 class="card-header">Signup</h2>
+            <div class="card-body">
+                <label for="username-input-signup" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username-input-signup" aria-describedby="username signup" required>
+            </div>
+
+            <div class="card-body">
+                <label for="password-input-signup" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password-input-signup" required>
+            </div>
+            <button type="submit" class="btn btn-primary m-3">Sign Up!</button>
+        </form>
+
+        <a href="/login ">Login Instead</a>
+    </div>
+</div>
+
+<script src="/js/signup.js"></script>
