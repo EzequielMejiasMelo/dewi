@@ -13,7 +13,8 @@ User.init(
         username: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true,    
+            primaryKey: true, 
+            unique: true,
         },
         password: {
             type: DataTypes.STRING,
