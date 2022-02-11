@@ -14,6 +14,7 @@ Books.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         image_link: {
             type: DataTypes.STRING,

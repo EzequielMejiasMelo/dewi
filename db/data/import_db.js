@@ -24,8 +24,8 @@ function getData(){
         }
     })
     .on('end',function(){
-        console.log(csvData);
+      return csvData;
     });
 };
 
-getData();
+module.exports = getData;
