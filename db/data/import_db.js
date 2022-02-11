@@ -1,10 +1,11 @@
-const fs = require('fs'); 
+const fs = require('fs');
+const path = require('path');
 const csv = require('csv-parser');
 
 let csvData = [];
 function getData(){
 
-    fs.createReadStream('books.csv')
+    fs.createReadStream(path.join(__dirname, 'books.csv'))
     .pipe(csv())
     .on('data', function(data){
         try {
