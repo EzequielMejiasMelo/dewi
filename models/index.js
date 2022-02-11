@@ -7,3 +7,5 @@ Books.belongsToMany(Author, {through: 'AuthorBooks'});
 
 Tags.belongsToMany(Books, {through: 'BookTags'});
 Books.belongsToMany(Tags, {through: 'BookTags'});
+
+module.exports = {Author, Books, Tags};

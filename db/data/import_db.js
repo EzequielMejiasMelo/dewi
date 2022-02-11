@@ -1,10 +1,11 @@
-const fs = require('fs'); 
+const fs = require('fs');
+const path = require('path');
 const csv = require('csv-parser');
 
-let csvData = [];
-function getData(){
+async function getData(){
+  let csvData = [];
 
-    fs.createReadStream('books.csv')
+    await new Promise((resolve, reject) => {fs.createReadStream(path.join(__dirname, 'books.csv'))
     .pipe(csv())
     .on('data', function(data){
         try {
@@ -24,8 +25,10 @@ function getData(){
         }
     })
     .on('end',function(){
-        console.log(csvData);
-    });
-};
+      resolve();
+    })});
 
-getData();
+    return csvData;
+  };
+
+module.exports = getData;
