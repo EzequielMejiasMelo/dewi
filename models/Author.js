@@ -5,7 +5,7 @@ class Author extends Model {};
 
 Author.init(
     {
-        author_id: {
+        id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
