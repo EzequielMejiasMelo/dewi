@@ -13,12 +13,13 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/searchbooks", async (req, res) => {
+router.post("/searchbooks", async (req, res) => {
     // should have the queries limit and pagenum.
     try{
     //console.log(req.body.tags);
     const limit= req.query.limit ? parseInt(req.query.limit) : 10;
     const pagenum= req.query.pagenum ? (limit*(parseInt(req.query.pagenum)-1))+1 : 1;
+    console.log(req.body);
     const tagsRaw = await Tags.findAll({where: {name: req.body.tags}});
     const tags = tagsRaw.map(element => element.id);
     let searchResults = await Books.findAll({
@@ -36,7 +37,7 @@ router.get("/searchbooks", async (req, res) => {
             include: [{ model: Tags, through: {model: TagBooks, attributes:[]}, as: 'book_tags'}]
         }));
     }
-    res.json(output);
+    res.json({books: output, totalcount: searchResults.length, pagestart: pagenum});
     }catch(err){
         res.status(400).json('Cannot parse data.')
         console.log(err);
