@@ -1,9 +1,16 @@
 const req = require('express/lib/request');
 const { Author, Books, Tags, AuthorBooks, TagBooks } = require('../../models');
+const {Op} = require('sequelize');
 const router = require('express').Router();
 
-router.get("/", (req, res) => {
-    res.json("Here will be the list of all tags.");
+router.get("/", async (req, res) => {
+    try{
+        const tags = await Tags.findAll({order: ['id']});
+        res.json(tags);
+    } catch(err){
+        res.status(400).json('Cannot return data.')
+        console.log(err);
+    }
 });
 
 router.get("/searchbooks", async (req, res) => {
@@ -36,8 +43,22 @@ router.get("/searchbooks", async (req, res) => {
     }
 });
 
-router.get("/autocomp/:searchtext", (req, res) => {
-    res.json(`Here will be the list of tags based on the partial sent by param. Currently ${req.params.searchtext}`);
+router.get("/autocomp/:searchtext", async (req, res) => {
+    try{
+        const tags = await Tags.findAll({
+            where: {
+                name: {
+                    [Op.substring]: req.params.searchtext
+                }
+            },
+            limit: 10,
+            order: ['id']
+        });
+        res.json(tags);
+    } catch(err){
+        res.status(400).json('Cannot return data.')
+        console.log(err);
+    }
 });
 
 
