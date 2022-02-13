@@ -2,40 +2,29 @@
     <div class="column is-one-quarter">
         <div class="box has-text-centered">
             <h5 class="title is-5">Selected Tags</h5>
-            <div class="block">
-                <span class="tag is-danger mt-1 is-medium">
-                    fanasty
+            <div class="block" id="usedTags">
+                {{#each tags}}
+                <span class="tag is-danger m-1 is-large">
+                    {{this}}
                     <button class="delete"></button>
                 </span>
-                <span class="tag is-danger mt-1 is-medium">
-                    adventure
-                    <button class="delete"></button>
-                </span>
-                <span class="tag is-danger mt-1 is-medium">
-                    historical fiction
-                    <button class="delete"></button>
-                </span>
+                {{/each}}
             </div>
             <div class="block">
-                <button class="button is-medium is-success">Search for books!</button>
+                <button class="button is-medium is-success" id="startSearch">Search for books!</button>
             </div>
-            <form action="" class="field has-addons">
+            <form action="" class="field" id="tagFinder">
                 <div class="control is-expanded">
-                    <input class="input" type="text" placeholder="find tags">
-                </div>
-                <div class="control">
-                    <a class="button is-info">
-                        Enter Tag
-                    </a>
+                    <input class="input" type="text" placeholder="find tags" id="searchTag">
                 </div>
             </form>
             <h5 class="title is-5">Popular tags</h5>
-            <div class="block">
-                <button class="button mt-1 is-light">sci-fi</button>
-                <button class="button mt-1 is-light">fanasty</button>
-                <button class="button mt-1 is-light">history</button>
-                <button class="button mt-1 is-light">non-fiction</button>
-                <button class="button mt-1 is-light">biography</button>
+            <div class="block" id="popularTags">
+                <button class="button is-medium is-light">Science Fiction</button>
+                <button class="button is-medium is-light">Fantasy</button>
+                <button class="button is-medium is-light">History</button>
+                <button class="button is-medium is-light">Nonfiction</button>
+                <button class="button is-medium is-light">Biography</button>
             </div>
         </div>
     </div>
@@ -43,15 +32,11 @@
         <div class="box">
             <p>searching for:</p>
             <div class="">
+                {{#each tags}}
                 <span class="tag is-danger is-medium">
-                    fanasty
+                    {{this}}
                 </span>
-                <span class="tag is-danger is-medium">
-                    adventure
-                </span>
-                <span class="tag is-danger is-medium">
-                    historical fiction
-                </span>
+                {{/each}}
             </div>
         </div>
         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
@@ -60,9 +45,6 @@
             <ul class="pagination-list">
                 <li>
                     <a class="pagination-link has-background-light" aria-label="Goto page 1">1</a>
-                </li>
-                <li>
-                    <span class="pagination-ellipsis">&hellip;</span>
                 </li>
                 <li>
                     <a class="pagination-link has-background-light" aria-label="Goto page 45">45</a>
@@ -74,140 +56,17 @@
                     <a class="pagination-link has-background-light" aria-label="Goto page 47">47</a>
                 </li>
                 <li>
-                    <span class="pagination-ellipsis">&hellip;</span>
-                </li>
-                <li>
                     <a class="pagination-link has-background-light" aria-label="Goto page 86">86</a>
                 </li>
             </ul>
         </nav>
-        <div class="box p-0">
-            <div class="columns  is-mobile m-0">
-                <div class="column is-one-fifth">
-                    <figure class="image">
-                        <img
-                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1349098767l/1001204.jpg">
-                    </figure>
-                </div>
-                <div class="column">
-                    <div class="content">
-                        <h4 class="title is-4">Anthropological studies of religion</h4>
-                        <h5 class="title is-5">tags:
-                            <span class="tag is-danger mt-1 is-medium">
-                                fanasty
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                adventure
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                historical fiction
-                                <button class="delete"></button>
-                            </span>
-                        </h5>
-                        <a class="button"
-                            href="https://www.amazon.com/s?k=Anthropological+studies+of+religion&i=stripbooks">Find it
-                            on amazon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="box p-0">
-            <div class="columns  is-mobile m-0">
-                <div class="column is-one-fifth">
-                    <figure class="image">
-                        <img
-                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1349098767l/1001204.jpg">
-                    </figure>
-                </div>
-                <div class="column">
-                    <div class="content">
-                        <h4 class="title is-4">Anthropological studies of religion</h4>
-                        <h5 class="title is-5">tags:
-                            <span class="tag is-danger mt-1 is-medium">
-                                fanasty
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                adventure
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                historical fiction
-                                <button class="delete"></button>
-                            </span>
-                        </h5>
-                        <a class="button"
-                            href="https://www.amazon.com/s?k=Anthropological+studies+of+religion&i=stripbooks">Find it
-                            on amazon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="box p-0">
-            <div class="columns  is-mobile m-0">
-                <div class="column is-one-fifth">
-                    <figure class="image">
-                        <img
-                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1349098767l/1001204.jpg">
-                    </figure>
-                </div>
-                <div class="column">
-                    <div class="content">
-                        <h4 class="title is-4">Anthropological studies of religion</h4>
-                        <h5 class="title is-5">tags:
-                            <span class="tag is-danger mt-1 is-medium">
-                                fanasty
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                adventure
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                historical fiction
-                                <button class="delete"></button>
-                            </span>
-                        </h5>
-                        <a class="button"
-                            href="https://www.amazon.com/s?k=Anthropological+studies+of+religion&i=stripbooks">Find it
-                            on amazon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="box p-0">
-            <div class="columns  is-mobile m-0">
-                <div class="column is-one-fifth">
-                    <figure class="image">
-                        <img
-                            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1349098767l/1001204.jpg">
-                    </figure>
-                </div>
-                <div class="column">
-                    <div class="content">
-                        <h4 class="title is-4">Anthropological studies of religion</h4>
-                        <h5 class="title is-5">tags:
-                            <span class="tag is-danger mt-1 is-medium">
-                                fanasty
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                adventure
-                                <button class="delete"></button>
-                            </span>
-                            <span class="tag is-danger mt-1 is-medium">
-                                historical fiction
-                                <button class="delete"></button>
-                            </span>
-                        </h5>
-                        <a class="button"
-                            href="https://www.amazon.com/s?k=Anthropological+studies+of+religion&i=stripbooks">Find it
-                            on amazon</a>
-                    </div>
-                </div>
-            </div>
+        <div id="searchResultDisplay">
         </div>
     </div>
 </div>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/homepage.js"></script>
+<script src="js/search.js"></script>

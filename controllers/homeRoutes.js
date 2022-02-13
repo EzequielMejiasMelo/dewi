@@ -4,8 +4,9 @@ router.get('/', (req, res) => {
     res.render('homepage');
 });
 
-router.get('/search', (req, res) => {
-    res.render('search');
+router.get('/search', async (req, res) => {
+    const tags = req.query.tagsearch ? req.query.tagsearch.split(',') : ["Fiction"];
+    res.render('search', {tags});
 });
 
 router.get('/login', (req, res) => {

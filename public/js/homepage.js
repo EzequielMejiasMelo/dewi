@@ -3,7 +3,7 @@ const searchTag = $('#searchTag');
 const popularTag = $('#popularTags');
 const searchButton = $('#startSearch');
 
-const taglist = ["Fiction"];
+const taglist = [];
 
 activeTags.on("click","button", function (event) {
     console.log("Clicking!");
@@ -18,7 +18,7 @@ popularTag.on("click", "button", function (event) {
 })
 
 searchButton.on('click', function(){
-    document.location.replace(`/search?tagsearch=${taglist.join(',')}`)
+    document.location.replace(`/search?tagsearch=${taglist.join(',')}&pagenum=1`)
 });
 
 searchTag.autocomplete({
@@ -57,3 +57,9 @@ function renderTagList(){
     };
     searchButton.prop("disabled",false);
 }
+
+$(function(){
+    for(let i=0; i< activeTags.children().length; i++){
+        taglist.push(activeTags.children().eq(i).text().trim());
+    }
+})
