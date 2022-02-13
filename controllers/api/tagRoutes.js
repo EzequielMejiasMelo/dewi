@@ -31,7 +31,7 @@ router.get("/searchbooks", async (req, res) => {
 
     searchResults = searchResults.filter(element =>{return element.book_tags.length >= tags.length});
     let output = [];
-    for(let i = pagenum-1; i < pagenum + limit-1 || i >= searchResults.length; i++){
+    for(let i = pagenum-1; i < pagenum + limit-1 && i < searchResults.length; i++){
         output.push(await Books.findByPk(searchResults[i].id, {
             include: [{ model: Tags, through: {model: TagBooks, attributes:[]}, as: 'book_tags'}]
         }));
