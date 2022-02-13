@@ -24,6 +24,9 @@ Books.belongsToMany(Tags, {through: {
     model: TagBooks,
     unique: false
   },
-  as: 'book-tags'});
-
+  as: 'book_tags'});
+// Tags.belongsTo(Books);
+// Books.hasMany(Tags);
+// Books.belongsTo(Tags);
+// Tags.hasMany(Books);
 module.exports = {Author, Books, Tags, AuthorBooks, TagBooks};
