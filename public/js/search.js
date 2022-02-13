@@ -1,5 +1,7 @@
 const searchResultDisplay = $('#searchResultDisplay');
-
+const prevButton = $('#previous');
+const numberDisplay = $('#number');
+const nextButton = $('#next');
 
 async function init() {
     console.log("hello!");
@@ -7,7 +9,7 @@ async function init() {
     const tags = params.get("tagsearch").split(",");
     const pagenum = parseInt(params.get("pagenum"));
     console.log(JSON.stringify({ tags }));
-    const books = await fetch(`/api/tags/searchbooks?pagenum=${pagenum}`, {
+    const searchResult = await fetch(`/api/tags/searchbooks?pagenum=${pagenum}`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -23,8 +25,12 @@ async function init() {
             //   renderRecipes(data.results);
             return data;
         });
-    console.log(books);
-    for (const book of books) {
+    
+    pagenum > 1 ? prevButton.attr("href", `/search?tagsearch=${taglist.join(',')}&pagenum=${pagenum-1}`) : prevButton.attr("href", `/search?tagsearch=${taglist.join(',')}&pagenum=1`);
+    pagenum*10 < searchResult.totalcount ? nextButton.attr("href", `/search?tagsearch=${taglist.join(',')}&pagenum=${pagenum+1}`) : prevButton.attr("href", `/search?tagsearch=${taglist.join(',')}&pagenum=${Math.ceil(searchResult.totalcount/10)}`);
+    numberDisplay.text(`${searchResult.pagestart}-${searchResult.pagestart + 9} of ${searchResult.totalcount}`);
+    
+    for (const book of searchResult.books) {
         let taglist=``;
         for(const tags of book.book_tags){
             taglist = taglist + `<span class="tag is-danger m-1 is-medium">
@@ -46,7 +52,7 @@ async function init() {
                         ${taglist}
                     </h5>
                     <a class="button"
-                        href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}&i=stripbooks">Find it
+                        href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}&i=stripbooks" target="_blank">Find it
                         on amazon</a>
                 </div>
             </div>

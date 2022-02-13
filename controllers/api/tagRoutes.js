@@ -37,7 +37,7 @@ router.post("/searchbooks", async (req, res) => {
             include: [{ model: Tags, through: {model: TagBooks, attributes:[]}, as: 'book_tags'}]
         }));
     }
-    res.json(output);
+    res.json({books: output, totalcount: searchResults.length, pagestart: pagenum});
     }catch(err){
         res.status(400).json('Cannot parse data.')
         console.log(err);
