@@ -1,6 +1,6 @@
-const { Mode, DataTypes } = require('sequelize');
-const sequelize = require('../config/config');
+const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
+const sequelize = require('../config/config');
 
 class User extends Model {
     checkPassword(loginPw) {
@@ -30,8 +30,13 @@ User.init(
                 newUserData.password = await bcrypt.hash(newUserData, 10);
                 return newUserData;
             },
-        }
-    },
-)
+        },
+        sequelize,
+        timestamps: false,
+        underscored: true,
+        modelName: 'user',
+        tableName: 'users'
+    }
+);
 
 module.exports = User;
