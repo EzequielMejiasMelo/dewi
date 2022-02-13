@@ -41,7 +41,7 @@
 // seedDatabase();
 
 const sequelize = require('../config/config');
-const { Author, Books, Tags, AuthorBooks, TagBooks } = require('../models');
+const { Author, Books, Tags, AuthorBooks, TagBooks, } = require('../models');
 const getData = require('../db/data/import_db');
 
 
