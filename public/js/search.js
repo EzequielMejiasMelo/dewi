@@ -69,11 +69,13 @@ async function init() {
         const response = await fetch(`/api/userbook/${$(this).attr("bookid")}`,{
             method: 'POST'
         });
-        if(response.ok){
+        if(response.status === 200){
             alert("The book has been added to your favorites.");
             $(this).prop("disabled", true);
+        }else if(response.status === 401){
+            alert("Please login to save favorites.");
         }else{
-            alert("Books has already been added, cannot be found, or you are not logged in.");
+            alert("Could not find book to favorite.");
         }
     });
 }
