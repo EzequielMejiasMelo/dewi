@@ -29,7 +29,7 @@ router.post("/:id", withAuth, async (req, res) => {
     }
 });
 
-router.delete("/:id", withAuth, (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
     //This will remove the book of id ${req.params.id} from the user's favorites.
     try {
         const book = await Books.findOne({
