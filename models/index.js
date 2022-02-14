@@ -8,18 +8,18 @@ Author.belongsToMany(Books, {through: {
     model: AuthorBooks,
     unique: false
   },
-  as: 'authored-books'});
+  as: 'authored_books'});
 Books.belongsToMany(Author, {through: {
     model: AuthorBooks,
     unique: false
   },
-  as: 'my-authors'});
+  as: 'my_authors'});
 
 Tags.belongsToMany(Books, {through: {
     model: TagBooks,
     unique: false
   },
-  as: 'tagged-books'});
+  as: 'tagged_books'});
 Books.belongsToMany(Tags, {through: {
     model: TagBooks,
     unique: false

@@ -34,7 +34,8 @@ router.post("/searchbooks", async (req, res) => {
     let output = [];
     for(let i = pagenum-1; i < pagenum + limit-1 && i < searchResults.length; i++){
         output.push(await Books.findByPk(searchResults[i].id, {
-            include: [{ model: Tags, through: {model: TagBooks, attributes:[]}, as: 'book_tags'}]
+            include: [{ model: Tags, through: {model: TagBooks, attributes:[]}, as: 'book_tags'},
+                {model: Author, through: {model: AuthorBooks, attributes:[]}, as: 'my_authors'}]
         }));
     }
     res.json({books: output, totalcount: searchResults.length, pagestart: pagenum});
