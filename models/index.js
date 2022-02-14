@@ -26,6 +26,7 @@ Tags.belongsToMany(Books, {through: {
   },
   as: 'tagged-books'
 });
+
 Books.belongsToMany(Tags, {through: {
     model: TagBooks,
     unique: false
