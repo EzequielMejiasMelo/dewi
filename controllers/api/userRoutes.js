@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
       }
 });
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     res.json(`This will return the login'd users favorite books.`);
 });
 
