@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const userData = await User.create(req.body);
     
@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
       }
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const userData = await User.findOne({ where: { username: req.body.username } });
     
@@ -47,7 +47,7 @@ router.post("/login", (req, res) => {
       }
 });
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     res.json(`This will return the login'd users favorite books.`);
 });
 
