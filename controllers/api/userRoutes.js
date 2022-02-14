@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Books, User } = require('../../models');
+const { Books, User, UserBooks, Author, AuthorBooks } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post("/", async (req, res) => {
@@ -51,20 +51,17 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/favorites", withAuth, async (req, res) => {
-
   try {
+
     const user = await User.findOne({
       where: {
         username: req.session.username,
-      }
+      },
+      include: [{model: Books, include: [{model: Author, through: AuthorBooks, as: 'my_authors'}], through: UserBooks, as: 'books_user'}]
     });
-
     console.log(user);
 
-    const userBooks = await user.getBooks();
-    console.log(userbooks);
-
-    res.status(200).json(userBooks);
+    res.status(200).json({books: user.books_user});
   } catch (err) {
     res.status(400).json(err);
   }
