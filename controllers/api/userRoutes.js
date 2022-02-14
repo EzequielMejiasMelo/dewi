@@ -50,7 +50,8 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/favorites", withAuth, async (req, res) => {
+
   try {
     const user = await User.findOne({
       where: {
@@ -58,7 +59,10 @@ router.get("/", withAuth, async (req, res) => {
       }
     });
 
+    console.log(user);
+
     const userBooks = await user.getBooks();
+    console.log(userbooks);
 
     res.status(200).json(userBooks);
   } catch (err) {

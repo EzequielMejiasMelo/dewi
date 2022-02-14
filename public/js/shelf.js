@@ -1,12 +1,15 @@
 const shelfDisplay = document.querySelector('#shelfdisplay');
+
 const viewFavorite = async () => {
-    const response = await fetch('/api/userbookRoutes/', {
+    const response = await fetch('/api/user/favorites', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
     });
+
+    console.log(response);
 
     if (response.ok) {
         for (const book of response.books) {
@@ -33,10 +36,12 @@ const viewFavorite = async () => {
     </div>`);
 
         }
-     } else {
-            alert(response.statusText);
-        }
-    };
+    } else {
+        alert(response.statusText);
+    }
+
+    document.querySelector('.removebutton').addEventListener('click', removeFavorite);
+};
 
 
 const removeFavorite = async (event) => {
@@ -47,11 +52,12 @@ const removeFavorite = async (event) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-    })
+    });
+
     if (response.ok) {
         document.querySelector(book_id).remove();
     }
-}
-document.querySelector('.removebutton').addEventListener('click', removeFavorite);
+};
+
 
 viewFavorite();
