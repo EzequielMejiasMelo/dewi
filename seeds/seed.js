@@ -41,9 +41,8 @@
 // seedDatabase();
 
 const sequelize = require('../config/config');
-const { Author, Books, Tags, AuthorBooks, TagBooks, } = require('../models');
+const { Author, Books, Tags, AuthorBooks, TagBooks, User, UserBooks } = require('../models');
 const getData = require('../db/data/import_db');
-const User = require('../models/User');
 const userData = require('./userSeeds.json');
 
 const seedDatabase = async () => {
