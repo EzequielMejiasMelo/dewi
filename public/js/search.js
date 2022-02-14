@@ -37,6 +37,10 @@ async function init() {
             ${tags.name}
         </span>`;
         }
+        console.log(book.my_authors);
+        let authors = `by ${book.my_authors.map(element => {
+            return element.name;
+        }).join(', ')}.`;
         searchResultDisplay.append(`<div class="box p-0">
         <div class="columns  is-mobile m-0">
             <div class="column is-one-fifth">
@@ -48,11 +52,12 @@ async function init() {
             <div class="column">
                 <div class="content">
                     <h4 class="title is-4">${book.title}</h4>
+                    <h5 class="title is-5">${authors}</h5>
                     <h5 class="title is-5">tags:
                         ${taglist}
                     </h5>
                     <a class="button"
-                        href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}&i=stripbooks" target="_blank">Find it
+                        href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}+by+${book.my_authors[0].name.split(' ').join('+')}&i=stripbooks" target="_blank">Find it
                         on amazon</a>
                 </div>
             </div>
