@@ -3,6 +3,7 @@ const Books = require('./Books');
 const Tags = require('./Tags');
 const AuthorBooks = require('./AuthorBooks');
 const TagBooks = require('./TagBooks');
+const User = require('./User');
 
 Author.belongsToMany(Books, {through: {
     model: AuthorBooks,
@@ -25,6 +26,16 @@ Books.belongsToMany(Tags, {through: {
     unique: false
   },
   as: 'book_tags'});
+
+User.hasMany(Books, {
+  foreignKey: 'username',
+  onDelete: 'CASCADE'
+});
+
+Books.belongsTo(User, {
+  foreignKey: 'username'
+});
+
 // Tags.belongsTo(Books);
 // Books.hasMany(Tags);
 // Books.belongsTo(Tags);

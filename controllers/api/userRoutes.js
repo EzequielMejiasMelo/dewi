@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const { Books } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.post("/", async (req, res) => {
     try {
@@ -47,8 +49,20 @@ router.post("/login", async (req, res) => {
       }
 });
 
-router.get("/", async (req, res) => {
-    res.json(`This will return the login'd users favorite books.`);
+router.get("/", withAuth, async (req, res) => {
+    try {
+        const user = await User.findOne({
+            where: {
+                username: req.session.username,
+            }
+        });
+
+        const userBooks = await user.getBooks();
+    
+        res.status(200).json(userBooks);
+      } catch (err) {
+        res.status(400).json(err);
+      }
 });
 
 
