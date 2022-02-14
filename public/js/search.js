@@ -33,7 +33,7 @@ async function init() {
     for (const book of searchResult.books) {
         let taglist=``;
         for(const tags of book.book_tags){
-            taglist = taglist + `<span class="tag is-danger m-1 is-medium">
+            taglist = taglist + `<span class="tag m-1 is-medium has-text-weight-light" id="bookTag">
             ${tags.name}
         </span>`;
         }
@@ -53,12 +53,12 @@ async function init() {
                 <div class="content">
                     <h4 class="title is-4">${book.title}</h4>
                     <h5 class="title is-5">${authors}</h5>
-                    <h5 class="title is-5">tags:
+                    <h5 class="title is-5">Tags:
                         ${taglist}
                     </h5>
                     <a class="button"
                         href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}+by+${book.my_authors[0].name.split(' ').join('+')}&i=stripbooks" target="_blank">Find it
-                        on amazon</a>
+                        on Amazon</a>
                 </div>
             </div>
         </div>

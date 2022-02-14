@@ -1,23 +1,15 @@
 <section class="has-text-centered">
-    <h1 class="title is-1 has-text-light">Welcome to Dewey!</h1>
+    {{!-- <div class="bg-image">
+        <figure class="image">
+            <img src="../assets/pexels-ricardo-esquivel-1907785.jpg">
+        </figure>
+    </div> --}}
+    <h1 class="title is-1 has-text-light">Welcome to Dewi!</h1>
     <h4 class="subtitle is-4 has-text-light">A Book recommendation and logging website!</h4>
     <h4 class="subtitle is-4 has-text-light">Find your next great read today!</h4>
+
+
     <div class="box">
-        <h5 class="title is-5">Selected Tags</h5>
-        <div class="block" id="usedTags">
-            <span class="tag is-danger m-1 is-large">
-                Fiction
-                <button class="delete"></button>
-            </span>
-        </div>
-        <div class="block">
-            <button class="button is-medium is-success" id="startSearch">Search for books!</button>
-            </div>
-        <form action="" class="field" id="tagFinder">
-            <div class="control is-expanded">
-                <input class="input" type="text" placeholder="find tags" id="searchTag">
-            </div>
-        </form>
         <h5 class="title is-5">Popular tags</h5>
         <div class="block" id="popularTags">
             <button class="button is-medium is-light">Science Fiction</button>
@@ -26,13 +18,29 @@
             <button class="button is-medium is-light">Nonfiction</button>
             <button class="button is-medium is-light">Biography</button>
         </div>
+
+        <h5 class="title is-5">Selected Tags</h5>
+        <div class="block" id="usedTags">
+            <span class="tag is m-1 is-large" id="text">
+                Fiction
+                <button class="delete"></button>
+            </span>
+        </div>
+
+        <form action="" class="field" id="tagFinder">
+            <div class="control is-expanded">
+                <input class="input" type="text" placeholder="Find your next great read here:" id="searchTag">
+            </div>
+        </form>
+        <div class="block">
+            <button class="button is-medium is-success" id="startSearch" small
+                data-hint="Use this button to find your next favorite book" data-hintposition="bottom-middle">Search for
+                books!</button>
+        </div>
     </div>
 
 </section>
-<link
-      rel="stylesheet"
-      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-    />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/homepage.js"></script>

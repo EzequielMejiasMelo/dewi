@@ -1,24 +1,25 @@
 <div class="columns">
     <div class="column is-one-quarter">
         <div class="box has-text-centered">
+             <form action="" class="field" id="tagFinder">
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="find tags" id="searchTag">
+                </div>
+            </form>
+            <div class="block">
+                <button class="button is-medium is-success" id="startSearch">Search for books!</button>
+            </div>
             <h5 class="title is-5">Selected Tags</h5>
             <div class="block" id="usedTags">
                 {{#each tags}}
-                <span class="tag is-danger m-1 is-large">
+                <span class="tag is-danger m-1 is-large" id="selectedTag">
                     {{this}}
                     <button class="delete"></button>
                 </span>
                 {{/each}}
             </div>
-            <div class="block">
-                <button class="button is-medium is-success" id="startSearch">Search for books!</button>
-            </div>
-            <form action="" class="field" id="tagFinder">
-                <div class="control is-expanded">
-                    <input class="input" type="text" placeholder="find tags" id="searchTag">
-                </div>
-            </form>
-            <h5 class="title is-5">Popular tags</h5>
+           
+            <h5 class="title is-5">Popular Tags</h5>
             <div class="block" id="popularTags">
                 <button class="button is-medium is-light">Science Fiction</button>
                 <button class="button is-medium is-light">Fantasy</button>
@@ -30,10 +31,10 @@
     </div>
     <div class="column">
         <div class="box">
-            <p>searching for:</p>
+            <p class="has-text-weight-semibold">Searching for these Tags:</p>
             <div class="">
                 {{#each tags}}
-                <span class="tag is-danger is-medium">
+                <span class="tag is-danger is-medium" id="selectedTag">
                     {{this}}
                 </span>
                 {{/each}}
