@@ -22,7 +22,6 @@ async function init() {
         }
         return response.json();
     }).then(function (data) {
-            //   renderRecipes(data.results);
             return data;
         });
     
@@ -33,7 +32,7 @@ async function init() {
     for (const book of searchResult.books) {
         let taglist=``;
         for(const tags of book.book_tags){
-            taglist = taglist + `<span class="tag is-danger m-1 is-medium">
+            taglist = taglist + `<span class="tag is-danger m-1 is-medium is-small-mobile">
             ${tags.name}
         </span>`;
         }
@@ -59,11 +58,32 @@ async function init() {
                     <a class="button"
                         href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}+by+${book.my_authors[0].name.split(' ').join('+')}&i=stripbooks" target="_blank">Find it
                         on amazon</a>
+                    <button class="button favoritebutton" bookid="${book.id}">Add to Favorites</button>
                 </div>
             </div>
         </div>
     </div>`);
     }
+    $('.favoriteButton').on('click', async function(){
+        // const favoriteAdded = await fetch(`/api/userbooks/${$(this).attr("bookid")}`,{
+        //     method: 'POST'
+        // }).then(function (response) {
+        //     if (response.status === 401) {
+        //         console.log("You failed!");
+        //     }
+        //     return response.json();
+        // }).then(function (data) {
+        //         return data;
+        //     });
+        // if(favoriteAdded.state === 'added'){
+        //     $(this).text('Favorite Added');
+        // } else if(favoriteAdded.state === 'already'){
+        //     $(this).text('Favorite Already Added');
+        // } else{
+        //     $(this).text('Could not add Favorite.')
+        // }
+        // $(this).prop("disabled",true);
+    });
 }
 
 
