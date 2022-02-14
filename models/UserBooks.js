@@ -12,7 +12,7 @@ UserBooks.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        username: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'users',
