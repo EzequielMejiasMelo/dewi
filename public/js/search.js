@@ -22,7 +22,6 @@ async function init() {
         }
         return response.json();
     }).then(function (data) {
-            //   renderRecipes(data.results);
             return data;
         });
     
@@ -58,12 +57,25 @@ async function init() {
                     </h5>
                     <a class="button"
                         href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}+by+${book.my_authors[0].name.split(' ').join('+')}&i=stripbooks" target="_blank">Find it
-                        on Amazon</a>
+                        on amazon</a>
+                    <button class="button favoritebutton" bookid="${book.id}">Add to Favorites</button>
                 </div>
             </div>
         </div>
     </div>`);
     }
+    $('.favoriteButton').on('click', async function(){
+        console.log($(this).attr("bookid"));
+        const response = await fetch(`/api/userbook/${$(this).attr("bookid")}`,{
+            method: 'POST'
+        });
+        if(response.ok){
+            alert("The book has been added to your favorites.");
+            $(this).prop("disabled", true);
+        }else{
+            alert("Books has already been added, cannot be found, or you are not logged in.");
+        }
+    });
 }
 
 

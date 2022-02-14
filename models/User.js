@@ -10,11 +10,15 @@ class User extends Model {
 
 User.init(
     {
-        username: {
+        id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true, 
-            unique: true,
+            autoIncrement: true
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         password: {
             type: DataTypes.STRING,
@@ -27,7 +31,7 @@ User.init(
     {
         hooks: {
             beforeCreate: async (newUserData) => {
-                newUserData.password = await bcrypt.hash(newUserData, 10);
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
             },
         },
