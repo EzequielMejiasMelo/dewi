@@ -43,14 +43,17 @@
 const sequelize = require('../config/config');
 const { Author, Books, Tags, AuthorBooks, TagBooks, } = require('../models');
 const getData = require('../db/data/import_db');
-
+const User = require('../models/User');
+const userData = require('./userSeeds.json');
 
 const seedDatabase = async () => {
     const csvData = await getData();
     console.log(csvData);
 
     await sequelize.sync({ force: true });
-
+    for(const newUser of userData){
+        await User.create(newUser);
+    }
     for (const data of csvData) {
         const book = await Books.create({ title: data.title, image_link: data.img_link, rating: data.rating }).catch((err)=> console.log('Duplicate Book'));
         
@@ -70,7 +73,6 @@ const seedDatabase = async () => {
             };
         };
     }
-
     process.exit(0);
 };
 
