@@ -65,24 +65,16 @@ async function init() {
     </div>`);
     }
     $('.favoriteButton').on('click', async function(){
-        // const favoriteAdded = await fetch(`/api/userbooks/${$(this).attr("bookid")}`,{
-        //     method: 'POST'
-        // }).then(function (response) {
-        //     if (response.status === 401) {
-        //         console.log("You failed!");
-        //     }
-        //     return response.json();
-        // }).then(function (data) {
-        //         return data;
-        //     });
-        // if(favoriteAdded.state === 'added'){
-        //     $(this).text('Favorite Added');
-        // } else if(favoriteAdded.state === 'already'){
-        //     $(this).text('Favorite Already Added');
-        // } else{
-        //     $(this).text('Could not add Favorite.')
-        // }
-        // $(this).prop("disabled",true);
+        console.log($(this).attr("bookid"));
+        const response = await fetch(`/api/userbook/${$(this).attr("bookid")}`,{
+            method: 'POST'
+        });
+        if(response.ok){
+            alert("The book has been added to your favorites.");
+            $(this).prop("disabled", true);
+        }else{
+            alert("Books has already been added, cannot be found, or you are not logged in.");
+        }
     });
 }
 
