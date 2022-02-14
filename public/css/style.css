@@ -1,0 +1,51 @@
+* {
+    font-family: 'Playfair Display', serif;
+}
+
+
+#navbar {
+    background-color: #823329;
+    
+}
+
+body {
+    background-color: #1C3738;
+}
+/* 
+.bg-image {
+    background-image: url(/Projects/assets/pexels-ricardo-esquivel-1907785.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+} */
+
+
+#text, #startSearch, #bookTag {
+    background-color: #823329;
+    color: white;
+}
+
+
+#selectedTag {
+    background-color: #3A4F41;
+    color: white;
+    font-size: 16px;
+}
+
+#bookTag {
+    font-style: normal;
+}
+
+.p {
+    font-style: italic;
+}
+
+.burger {
+    background-color: #1C3738;
+}
+
+@media screen and (max-width: 1023px) {
+    .navbar-menu {
+      background-color: #823329 !important;
+    }

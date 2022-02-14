@@ -32,7 +32,7 @@ async function init() {
     for (const book of searchResult.books) {
         let taglist=``;
         for(const tags of book.book_tags){
-            taglist = taglist + `<span class="tag is-danger m-1 is-medium is-small-mobile">
+            taglist = taglist + `<span class="tag m-1 is-medium has-text-weight-light" id="bookTag">
             ${tags.name}
         </span>`;
         }
@@ -52,7 +52,7 @@ async function init() {
                 <div class="content">
                     <h4 class="title is-4">${book.title}</h4>
                     <h5 class="title is-5">${authors}</h5>
-                    <h5 class="title is-5">tags:
+                    <h5 class="title is-5">Tags:
                         ${taglist}
                     </h5>
                     <a class="button"

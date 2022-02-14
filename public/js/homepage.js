@@ -50,7 +50,7 @@ function renderTagList(){
         return;
     }
     for(const tag of taglist){
-        activeTags.append(`<span class="tag is-danger m-1 is-large">
+        activeTags.append(`  <span class="tag is m-1 is-large" id="text">
     ${tag}
     <button class="delete"></button>
 </span>`);
@@ -63,3 +63,4 @@ $(function(){
         taglist.push(activeTags.children().eq(i).text().trim());
     }
 })
+
