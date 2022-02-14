@@ -52,4 +52,4 @@ User.belongsToMany(Books, {through: {
 // Books.hasMany(Tags);
 // Books.belongsTo(Tags);
 // Tags.hasMany(Books);
-module.exports = {Author, Books, Tags, AuthorBooks, TagBooks};
+module.exports = {Author, Books, Tags, AuthorBooks, TagBooks, User, UserBooks};

@@ -13,10 +13,10 @@ UserBooks.init(
             autoIncrement: true,
         },
         username: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
-                model: 'user',
-                key: 'username',
+                model: 'users',
+                key: 'id',
               },
               onDelete: "CASCADE"
         },
