@@ -33,8 +33,12 @@
           </div>
           <div class="navbar-end">
             <a href="/shelf" class="navbar-item has-text-light">Shelf</a>
+            {{#unless logged_in}}
             <a href="/login" class="navbar-item has-text-light">Login</a>
             <a href="/signup" class="navbar-item has-text-light">Sign Up</a>
+            {{else}}
+            <a class="navbar-item has-text-light" id="logoutButton">Logout</a>
+            {{/unless}}
           </div>
         </div>
       </nav>

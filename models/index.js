@@ -17,14 +17,14 @@ Books.belongsToMany(Author, {through: {
     model: AuthorBooks,
     unique: false
   },
-  as: 'my-authors'
+  as: 'my_authors'
 });
 
 Tags.belongsToMany(Books, {through: {
     model: TagBooks,
     unique: false
   },
-  as: 'tagged-books'
+  as: 'tagged_books'
 });
 
 Books.belongsToMany(Tags, {through: {
@@ -38,14 +38,14 @@ Books.belongsToMany(User, {through: {
     model: UserBooks,
     unique: false
   },
-  as: 'user-books'
+  as: 'user_books'
 });
 
 User.belongsToMany(Books, {through: {
     model: UserBooks,
     unique: false
   },
-  as: 'books-user'
+  as: 'books_user'
 });
 
 // Tags.belongsTo(Books);
