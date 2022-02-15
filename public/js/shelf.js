@@ -32,10 +32,10 @@ const viewFavorite = async () => {
                     <div class="content">
                         <h4 class="title is-4">${book.title}</h4>
                         <h4 class="title is-5">${authors}</h4>
-                        <a class="button"
+                        <a class="button is-medium has-text-weight-light" id="bookTag"
                             href="https://www.amazon.com/s?k=${book.title.split().join('+')}&i=stripbooks" target="_blank">Find it
                             on Amazon</a>
-                        <button class="button removebutton" bookid="${book.id}">Remove from Favorites</button>
+                        <button class="button removebutton is-medium" id="selectedTag" bookid="${book.id}">Remove from Favorites</button>
                     </div>
                 </div>
             </div>
