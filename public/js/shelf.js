@@ -1,5 +1,6 @@
 const shelfDisplay = $('#shelfdisplay');
 
+// Fetches the user's favorited books, and renders them to the page.
 const viewFavorite = async () => {
     const favorites = await fetch('/api/user/favorites', {
         method: 'GET',
@@ -13,8 +14,6 @@ const viewFavorite = async () => {
         }
         return response.json()
     }).then((data) => data);
-
-    console.log(favorites.books);
 
     if (favorites) {
         for (const book of favorites.books) {
@@ -49,10 +48,10 @@ const viewFavorite = async () => {
     $('.removebutton').on('click', removeFavorite);
 };
 
-
+// Removes the favorited book via API call.
+// If successful, remove the display block of that book.
 const removeFavorite = async (event) => {
     let book_id = event.target.getAttribute('bookid');
-    console.log(book_id);
     let response = await fetch('/api/userbook/' + book_id, {
         method: 'DELETE',
         headers: {

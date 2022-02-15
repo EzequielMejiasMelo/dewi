@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('csv-parser');
 
+// Sorts through the CSV data to let us manipulate it.
 async function getData(){
   let csvData = [];
 

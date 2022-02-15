@@ -6,6 +6,8 @@ const TagBooks = require('./TagBooks');
 const User = require('./User');
 const UserBooks = require('./UserBooks');
 
+// Links all databases to there corresponding through tables.
+
 Author.belongsToMany(Books, {through: {
     model: AuthorBooks,
     unique: false
@@ -48,8 +50,4 @@ User.belongsToMany(Books, {through: {
   as: 'books_user'
 });
 
-// Tags.belongsTo(Books);
-// Books.hasMany(Tags);
-// Books.belongsTo(Tags);
-// Tags.hasMany(Books);
 module.exports = {Author, Books, Tags, AuthorBooks, TagBooks, User, UserBooks};
