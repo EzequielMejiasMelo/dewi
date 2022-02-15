@@ -57,7 +57,7 @@ async function init() {
                     </h5>
                     <a class="button"
                         href="https://www.amazon.com/s?k=${book.title.split(' ').join('+')}+by+${book.my_authors[0].name.split(' ').join('+')}&i=stripbooks" target="_blank">Find it
-                        on amazon</a>
+                        on Amazon</a>
                     <button class="button favoritebutton" bookid="${book.id}">Add to Favorites</button>
                 </div>
             </div>

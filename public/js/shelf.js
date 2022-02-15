@@ -19,7 +19,7 @@ const viewFavorite = async () => {
     if (favorites) {
         for (const book of favorites.books) {
             console.log(book.title);
-            // let authors = `by ${book.my_authors.map(element => element.name).join(', ')}.`;
+            let authors = `by ${book.my_authors.map(element => element.name).join(', ')}.`;
             shelfDisplay.append(`<div id="${book.id}" class="box p-0">
             <div class="columns  is-mobile m-0">
                 <div class="column is-one-fifth">
@@ -31,10 +31,11 @@ const viewFavorite = async () => {
                 <div class="column">
                     <div class="content">
                         <h4 class="title is-4">${book.title}</h4>
+                        <h4 class="title is-5">${authors}</h4>
                         <a class="button"
                             href="https://www.amazon.com/s?k=${book.title.split().join('+')}&i=stripbooks" target="_blank">Find it
-                            on amazon</a>
-                        <button class="button removebutton" bookid="${book.id}">remove from Favorites</button>
+                            on Amazon</a>
+                        <button class="button removebutton" bookid="${book.id}">Remove from Favorites</button>
                     </div>
                 </div>
             </div>
