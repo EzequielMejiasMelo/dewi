@@ -2,9 +2,9 @@ const router = require('express').Router();
 const { Books, User, UserBooks, Author, AuthorBooks } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post("/", async (req, res) => {
+// Signs up a new user.
+router.post('/', async (req, res) => {
   try {
-
     console.log(req.body);
     const userData = await User.create(req.body);
 
@@ -19,9 +19,12 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+// Check for the username and verifies password. If good, logs the in with session storage.
+router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { username: req.body.username } });
+    const userData = await User.findOne({
+      where: { username: req.body.username },
+    });
 
     if (!userData) {
       res
@@ -44,30 +47,37 @@ router.post("/login", async (req, res) => {
 
       res.json({ user: userData, message: 'You are now logged in!' });
     });
-
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.get("/favorites", withAuth, async (req, res) => {
+// Get's the users favorite books.
+router.get('/favorites', withAuth, async (req, res) => {
   try {
-
     const user = await User.findOne({
       where: {
         username: req.session.username,
       },
-      include: [{model: Books, include: [{model: Author, through: AuthorBooks, as: 'my_authors'}], through: UserBooks, as: 'books_user'}]
+      include: [
+        {
+          model: Books,
+          include: [{ model: Author, through: AuthorBooks, as: 'my_authors' }],
+          through: UserBooks,
+          as: 'books_user',
+        },
+      ],
     });
     console.log(user);
 
-    res.status(200).json({books: user.books_user});
+    res.status(200).json({ books: user.books_user });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post("/logout", withAuth, async (req, res) => {
+// Logs the user out by removing the session data.
+router.post('/logout', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
