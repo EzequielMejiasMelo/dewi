@@ -3,7 +3,7 @@ const searchTag = $('#searchTag');
 const popularTag = $('#popularTags');
 const searchButton = $('#startSearch');
 
-const taglist = [];
+let taglist = [];
 
 activeTags.on("click","button", function (event) {
     console.log("Clicking!");
@@ -45,6 +45,7 @@ searchTag.autocomplete({
 
 function renderTagList(){
     activeTags.empty();
+    taglist = [...new Set(taglist)];
     if(!taglist.length){
         searchButton.prop("disabled",true);
         return;
